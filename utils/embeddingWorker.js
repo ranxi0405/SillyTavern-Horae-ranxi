@@ -15,7 +15,15 @@ self.onmessage = async (e) => {
             case 'init': {
                 const module = await import('./lib/transformers.min.js');
                 pipeline = module.pipeline;
-                module.env.allowLocalModels = false;
+
+                // 本地模型配置：只读本地文件，不访问 huggingface
+                const libBase = new URL('./lib/', import.meta.url).href;
+                module.env.allowLocalModels = true;
+                module.env.allowRemoteModels = false;
+                module.env.localModelPath = libBase + 'models/';
+                if (module.env.backends?.onnx?.wasm) {
+                    module.env.backends.onnx.wasm.numThreads = 1;
+                }
 
                 extractor = await pipeline('feature-extraction', data.model, {
                     dtype: data.dtype || 'q8',
