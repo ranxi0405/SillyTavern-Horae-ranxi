@@ -239,7 +239,6 @@ class HoraeManager {
                         for (const itemName of Object.keys(state.items)) {
                             if (getItemBaseName(itemName).toLowerCase() === baseName.toLowerCase()) {
                                 delete state.items[itemName];
-                                console.log(`[Horae] 物品数量归零自动删除: ${itemName}`);
                             }
                         }
                         continue;
@@ -254,7 +253,6 @@ class HoraeManager {
                         for (const itemName of Object.keys(state.items)) {
                             if (getItemBaseName(itemName).toLowerCase() === baseName.toLowerCase()) {
                                 delete state.items[itemName];
-                                console.log(`[Horae] 物品已消耗自动删除: ${itemName}`);
                             }
                         }
                         continue;

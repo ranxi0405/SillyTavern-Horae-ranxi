@@ -37,6 +37,8 @@ Refer to IDs (#ID) in [Item List], and strictly decide whether to output based o
 [When not to write]
   ✗ Item has no change at all → do not output any item line
   ✗ Item is only mentioned but state does not change → do not write
+  ✗ Do not re-list the entire inventory (full inventory dump is forbidden)
+  ✗ If no item changed at all this turn, output no item: or item-: lines
 
 [Format]
   Newly acquired: item:emoji item name(quantity)|description=holder@exact location (description can be omitted. But if the item has special meaning, such as a gift or keepsake, add description.)
